@@ -60,7 +60,7 @@ void Piezas::reset()
 Piece Piezas::dropPiece(int column)
 {
 	//first check out of bounds place 
-	if (column >= BOARD_COLS){
+	if (column >= BOARD_COLS || column < 0){
 		if (turn == X){
 			turn = O;
 		}
@@ -80,8 +80,8 @@ Piece Piezas::dropPiece(int column)
 		return Blank;
 	}
 	int count = 0;
-      //find lowest blank place in this column
-       while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
+	//find lowest blank place in this column
+	while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
 		count = count + 1;
 	}
 	board[count][column] = turn;
@@ -118,5 +118,85 @@ Piece Piezas::pieceAt(int row, int column)
  **/
 Piece Piezas::gameState()
 {
-	return Blank;
+
+	//max counts
+	xmax = 0;
+	omax = 0;
+
+
+	for (int i = 0; i < BOARD_ROWS; i++){
+
+		xcount = 0;
+		ocount = 0;
+		//scan horizontally to find maxes
+		for (int x = 0; x < BOARD_COLS; x++){
+			if (board[i][x] == X){
+				ocount = 0;
+				xcount += 1;
+				if (xcount > xmax) {
+					xmax = xcount;
+				}
+			}
+			else if (board [i][x] == O){
+				xcount = 0;
+				ocount += 1;
+				if (ocount > omax){
+					omax = ocount;
+				}
+			}
+			//found a blank piece then game is over
+			else if (board[i][x] == Blank){
+				return Invalid;
+			}
+
+		}
+
+	}
+
+
+	//vertical scan below
+
+	for (int i = 0; i < BOARD_COLS; i++){
+
+		xcount = 0;
+		ocount = 0;
+		//scan horizontally to find maxes
+		for (int x = 0; x < BOARD_ROWS; x++){
+			if (board[i][x] == X){
+				ocount = 0;
+				xcount += 1;
+				if (xcount > xmax) {
+					xmax = xcount;
+				}
+			}
+			else if (board [i][x] == O){
+				xcount = 0;
+				ocount += 1;
+				if (ocount > omax){
+					omax = ocount;
+				}
+			}
+			//found a blank piece then game is over
+			else if (board[i][x] == Blank){
+				return Invalid;
+			}
+
+		}
+
+	}
+	if (omax > xmax) {
+		piece ret = O;
+		return ret;
+	}
+	else if (xmax < omax) {
+		piece ret = X;
+		return ret;
+	}
+	else {
+		piece ret = Blank;
+		return ret;
+
+	}
+
+
 }
