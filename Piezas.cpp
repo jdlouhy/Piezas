@@ -158,8 +158,8 @@ Piece Piezas::gameState()
 
 	for (int i = 0; i < BOARD_COLS; i++){
 
-		xcount = 0;
-		ocount = 0;
+		int xcount = 0;
+		int ocount = 0;
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_ROWS; x++){
 			if (board[i][x] == X){
