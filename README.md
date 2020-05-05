@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jdlouhy/Piezas.svg?branch=master)](https://travis-ci.com/jdlouhy/Piezas)
+
 # Piezas
 
 ## Associated Enumerated Types
