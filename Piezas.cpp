@@ -13,23 +13,39 @@
  * [0,0][0,1][0,2][0,3]
  * So that a piece dropped in column 2 should take [0,2] and the next one
  * dropped in column 2 should take [1,2].
-**/
+ **/
 
 
 /**
  * Constructor sets an empty board (default 3 rows, 4 columns) and 
  * specifies it is X's turn first
-**/
+ **/
 Piezas::Piezas()
 {
+	for (int i = 0; i < BOARD_ROWS; i++){
+		std::vector<Piece> vec;
+		for (int x = 0; x < BOARD_COLS; x++){
+			Piece t;
+			board.push_back(t);
+		}
+	}
+	//it is xs turn first
+	turn = X;
 }
 
 /**
  * Resets each board location to the Blank Piece value, with a board of the
  * same size as previously specified
-**/
+ **/
 void Piezas::reset()
 {
+
+	for (int i = 0; i < BOARD_ROWS; i++){
+		for (int x = 0; x < BOARD_COLS; x++){
+			board[i][x] = Blank;
+		}   
+	}   
+
 }
 
 /**
@@ -39,19 +55,54 @@ void Piezas::reset()
  * In that case, placePiece returns Piece Blank value 
  * Out of bounds coordinates return the Piece Invalid value
  * Trying to drop a piece where it cannot be placed loses the player's turn
-**/ 
+ **/ 
 Piece Piezas::dropPiece(int column)
 {
-    return Blank;
+	//first check out of bounds place 
+	if (column >= BOARD_COLS){
+		if (turn == X){
+			turn = O;
+		}
+		else {
+			turn = X;
+		}
+		return Invalid;
+	}
+	//then check if the column is full case
+	if (board[0][column] != Blank){
+		if (turn == X){
+			turn = O;
+		}
+		else {
+			turn = X;
+		}
+		return Blank
+	}
+	count = 0;
+      //find lowest blank place in this column
+       while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
+		count = count + 1;
+	}
+	board[count][column] = turn;
+	piece copy = turn;	
+	if (turn == X){
+		turn = O;
+	}
+	else {
+		turn = X;
+	}
+
+	return copy;
+
 }
 
 /**
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
-**/
+ **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+	return board[row][column];
 }
 
 /**
@@ -62,8 +113,9 @@ Piece Piezas::pieceAt(int row, int column)
  * the most adjacent pieces in a single line. Lines can go either vertically
  * or horizontally. If both X's and O's have the same max number of pieces in a
  * line, it is a tie.
-**/
+ * We will signify this tie case with a blank piece. 
+ **/
 Piece Piezas::gameState()
 {
-    return Blank;
+	return Blank;
 }
