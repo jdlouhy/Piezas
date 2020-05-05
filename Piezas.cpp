@@ -26,8 +26,9 @@ Piezas::Piezas()
 		std::vector<Piece> vec;
 		for (int x = 0; x < BOARD_COLS; x++){
 			Piece t;
-			board.push_back(t);
+			vec.push_back(t);
 		}
+		board.push_back(vec);
 	}
 	//it is xs turn first
 	turn = X;
