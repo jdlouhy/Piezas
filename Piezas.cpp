@@ -120,14 +120,14 @@ Piece Piezas::gameState()
 {
 
 	//max counts
-	xmax = 0;
-	omax = 0;
+	int xmax = 0;
+	int omax = 0;
 
 
 	for (int i = 0; i < BOARD_ROWS; i++){
 
-		xcount = 0;
-		ocount = 0;
+		int xcount = 0;
+		int ocount = 0;
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_COLS; x++){
 			if (board[i][x] == X){
@@ -185,15 +185,15 @@ Piece Piezas::gameState()
 
 	}
 	if (omax > xmax) {
-		piece ret = O;
+		Piece ret = O;
 		return ret;
 	}
 	else if (xmax < omax) {
-		piece ret = X;
+		Piece ret = X;
 		return ret;
 	}
 	else {
-		piece ret = Blank;
+		Piece ret = Blank;
 		return ret;
 
 	}
