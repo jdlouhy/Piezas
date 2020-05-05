@@ -77,15 +77,15 @@ Piece Piezas::dropPiece(int column)
 		else {
 			turn = X;
 		}
-		return Blank
+		return Blank;
 	}
-	count = 0;
+	int count = 0;
       //find lowest blank place in this column
        while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
 		count = count + 1;
 	}
 	board[count][column] = turn;
-	piece copy = turn;	
+	Piece cp = turn;	
 	if (turn == X){
 		turn = O;
 	}
@@ -93,7 +93,7 @@ Piece Piezas::dropPiece(int column)
 		turn = X;
 	}
 
-	return copy;
+	return cp;
 
 }
 
