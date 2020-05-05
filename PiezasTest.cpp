@@ -1,10 +1,10 @@
 /**
  * Unit Tests for Piezas
-**/
+ **/
 
 #include <gtest/gtest.h>
 #include "Piezas.h"
- 
+
 class PiezasTest : public ::testing::Test
 {
 	protected:
@@ -18,3 +18,24 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
+
+
+//for place test, we need initial test, bounds checking, full case,  
+
+TEST(PiezasTest, placetest){
+
+	Pieza p;
+
+	p.dropPiece(0);
+
+	x = pieceAt(BOARD_ROWS-1,0);
+
+	ASSERT_EQ(x,X);
+
+}
+
+
+
+
+
+//check for ties game state, make sure wins are recognized correctly

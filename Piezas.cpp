@@ -84,7 +84,8 @@ Piece Piezas::dropPiece(int column)
 	while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
 		count = count + 1;
 	}
-	board[count][column] = turn;
+        //set that spot to turn piece, store turn piece before flip, flip, then return the stored previous turn piece
+        board[count][column] = turn;
 	Piece cp = turn;	
 	if (turn == X){
 		turn = O;
@@ -94,7 +95,6 @@ Piece Piezas::dropPiece(int column)
 	}
 
 	return cp;
-
 }
 
 /**
@@ -122,8 +122,6 @@ Piece Piezas::gameState()
 	//max counts
 	int xmax = 0;
 	int omax = 0;
-
-
 	for (int i = 0; i < BOARD_ROWS; i++){
 
 		int xcount = 0;
@@ -148,16 +146,11 @@ Piece Piezas::gameState()
 			else if (board[i][x] == Blank){
 				return Invalid;
 			}
-
 		}
 
 	}
-
-
 	//vertical scan below
-
 	for (int i = 0; i < BOARD_COLS; i++){
-
 		int xcount = 0;
 		int ocount = 0;
 		//scan horizontally to find maxes
@@ -180,9 +173,7 @@ Piece Piezas::gameState()
 			else if (board[i][x] == Blank){
 				return Invalid;
 			}
-
 		}
-
 	}
 	if (omax > xmax) {
 		Piece ret = O;
@@ -192,11 +183,10 @@ Piece Piezas::gameState()
 		Piece ret = X;
 		return ret;
 	}
+	//tie case 
 	else {
 		Piece ret = Blank;
 		return ret;
 
 	}
-
-
 }
