@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+#include <iostream>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -43,7 +44,7 @@ void Piezas::reset()
 
 	for (int i = 0; i < BOARD_ROWS; i++){
 		for (int x = 0; x < BOARD_COLS; x++){
-			board[i][x] = Blank;
+ 			board[i][x] = Blank;
 		}   
 	}   
 
@@ -85,7 +86,9 @@ Piece Piezas::dropPiece(int column)
 		count = count + 1;
 	}
         //set that spot to turn piece, store turn piece before flip, flip, then return the stored previous turn piece
+  
         board[count][column] = turn;
+	std::cout << " Placing piece at row : " << count << " and column : " << column << "  piece is : " << board[count][column] << " in the board and should be equivalent to turn : " << turn << std::endl;
 	Piece cp = turn;	
 	if (turn == X){
 		turn = O;
