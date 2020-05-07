@@ -29,7 +29,8 @@ TEST(PiezasTest, placetest){
 	p.dropPiece(0);
 
 	Piece x = p.pieceAt(BOARD_ROWS-1,0);
-
+       std::cout << x << endl;
+       std::cout << X << endl;
 	ASSERT_EQ(x,X);
 
 }
