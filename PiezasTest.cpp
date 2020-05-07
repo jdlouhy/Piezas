@@ -4,7 +4,7 @@
 
 #include <gtest/gtest.h>
 #include "Piezas.h"
-
+#include <iostream>
 class PiezasTest : public ::testing::Test
 {
 	protected:
