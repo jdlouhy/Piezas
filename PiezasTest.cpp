@@ -24,7 +24,7 @@ TEST(PiezasTest, sanityCheck)
 
 TEST(PiezasTest, placetest){
 
-	Pieza p;
+	Piezas p;
 
 	p.dropPiece(0);
 
