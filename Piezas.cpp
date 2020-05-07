@@ -44,7 +44,7 @@ void Piezas::reset()
 
 	for (int i = 0; i < BOARD_ROWS; i++){
 		for (int x = 0; x < BOARD_COLS; x++){
- 			board[i][x] = Blank;
+			board[i][x] = Blank;
 		}   
 	}   
 
@@ -68,6 +68,7 @@ Piece Piezas::dropPiece(int column)
 		else {
 			turn = X;
 		}
+		std::cout << "returning invalid" << std::endl;
 		return Invalid;
 	}
 	//then check if the column is full case
@@ -78,6 +79,7 @@ Piece Piezas::dropPiece(int column)
 		else {
 			turn = X;
 		}
+		std::cout << "returning blank" << std::endl;
 		return Blank;
 	}
 	int count = 0;
@@ -85,9 +87,9 @@ Piece Piezas::dropPiece(int column)
 	while ( count+1 < BOARD_ROWS && board[count+1][column] == Blank  ){
 		count = count + 1;
 	}
-        //set that spot to turn piece, store turn piece before flip, flip, then return the stored previous turn piece
-  
-        board[count][column] = turn;
+	//set that spot to turn piece, store turn piece before flip, flip, then return the stored previous turn piece
+
+	board[count][column] = turn;
 	std::cout << " Placing piece at row : " << count << " and column : " << column << "  piece is : " << board[count][column] << " in the board and should be equivalent to turn : " << turn << std::endl;
 	Piece cp = turn;	
 	if (turn == X){
