@@ -100,6 +100,19 @@ ASSERT_EQ(z,Invalid);
 
 }
 
+//game not done yet test
+TEST(PiezasTest, gamenotdoneyet) {
+Piezas p;
+p.dropPiece(0);
+p.dropPiece(0);
+ 
+Piece x = p.gameState();
+
+ASSERT_EQ(x, Invalid);
+
+}
+
+
 
 
 
