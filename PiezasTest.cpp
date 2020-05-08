@@ -119,6 +119,7 @@ TEST(PiezasTest, Xiswinner) {
 
 	for (int i = 0; i < BOARD_ROWS; i++){
 		for (int x = 0; x < BOARD_COLS; x++){
+			std::cout << "dropping at row " << i << " column " << x << std::endl;
 			p.dropPiece(x);
 			p.dropPiece(-1);
 		}   
