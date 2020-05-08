@@ -61,6 +61,19 @@ TEST(PiezasTest, dropleftbounds) {
 
 
 }
+//drops piece in negative col on o's turn
+TEST(PiezasTest, dropleftboundsoturn){
+Piezas p;
+ 
+ p.dropPiece(0);
+
+ Piece o = p.dropPiece(-1);
+
+ ASSERT_EQ(o, Invalid);
+
+
+
+}
 
 //drop past full
 TEST(PiezasTest, droppastfull) {
@@ -76,6 +89,16 @@ TEST(PiezasTest, droppastfull) {
 
 }
 
+//get piece at invalid spot- check that this returns invalid
+TEST(PiezasTest, invalidpieceat) {
+
+Piezas p;
+
+Piece z = p.pieceAt(-1,-1);
+
+ASSERT_EQ(z,Invalid)
+
+}
 
 
 
