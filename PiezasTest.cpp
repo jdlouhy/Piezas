@@ -147,3 +147,15 @@ TEST(PiezasTest, Oiswinner){
 }
 
 //check for ties game state, make sure wins are recognized correctly
+TEST(PiezasTest, TieTest){
+        Piezas p;
+        for (int i = 0; i < BOARD_ROWS; i++){
+                for (int x = 0; x < BOARD_COLS; x++){
+                        p.dropPiece(x);
+                        p.dropPiece(x);
+                }
+        }
+        Piece result  = p.gameState();
+        ASSERT_EQ(result, Blank);
+}
+
