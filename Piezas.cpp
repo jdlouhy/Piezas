@@ -136,6 +136,7 @@ Piece Piezas::gameState()
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_COLS; x++){
 			if (board[i][x] == X){
+			std::cout << " found  x at : " << i << " " << x << std::endl;
 				ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
@@ -143,6 +144,7 @@ Piece Piezas::gameState()
 				}
 			}
 			else if (board [i][x] == O){
+			std::cout << " found o at : " << i << " " << x  << std::endl;
 				xcount = 0;
 				ocount += 1;
 				if (ocount > omax){
@@ -166,7 +168,8 @@ Piece Piezas::gameState()
 		for (int x = 0; x < BOARD_ROWS; x++){
                             std::cout << "checking at [ " << x << " ] " << " [ " << i << " ]" << std::endl;
                                if (board[x][i] == X){
-				ocount = 0;
+                                std::cout << " found x at  : " << x << " " << i << std::endl;
+                                ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
 					xmax = xcount;
@@ -175,6 +178,7 @@ Piece Piezas::gameState()
 			else if (board [x][i] == O){
 				xcount = 0;
 				ocount += 1;
+				std::cout << " found o at : " << x << " " << i << std::endl;
 				if (ocount > omax){
 					omax = ocount;
 				}
