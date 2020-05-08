@@ -69,7 +69,6 @@ Piece Piezas::dropPiece(int column)
 		else {
 			turn = X;
 		}
-		std::cout << "returning invalid" << std::endl;
 		return Invalid;
 	}
 	//then check if the column is full case
@@ -80,7 +79,6 @@ Piece Piezas::dropPiece(int column)
 		else {
 			turn = X;
 		}
-		std::cout << "returning blank" << std::endl;
 		return Blank;
 	}
 	int count = 0;
@@ -91,7 +89,6 @@ Piece Piezas::dropPiece(int column)
 	//set that spot to turn piece, store turn piece before flip, flip, then return the stored previous turn piece
 
 	board[count][column] = turn;
-	std::cout << " Placing piece at row : " << count << " and column : " << column << "  piece is : " << board[count][column] << " in the board and should be equivalent to turn : " << turn << std::endl;
 	Piece cp = turn;	
 	if (turn == X){
 		turn = O;
@@ -109,6 +106,10 @@ Piece Piezas::dropPiece(int column)
  **/
 Piece Piezas::pieceAt(int row, int column)
 {
+        if (row < 0 || row >= BOARD_ROWS || column >= BOARD_COLS || column < 0 ){
+          return Invalid;
+	}
+
 	return board[row][column];
 }
 
