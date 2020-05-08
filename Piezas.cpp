@@ -164,7 +164,8 @@ Piece Piezas::gameState()
 		int ocount = 0;
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_ROWS; x++){
-			if (board[x][i] == X){
+                            std::cout << "checking at [ " << x << " ] " << " [ " << i << " ]" << std::endl;
+                               if (board[x][i] == X){
 				ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
