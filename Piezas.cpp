@@ -179,10 +179,6 @@ Piece Piezas::gameState()
 					omax = ocount;
 				}
 			}
-			//found a blank piece then game is not over
-			else if (board[x][i] == Blank){
-				return Invalid;
-			}
 		}
 	}
 	std::cout << "vertical scan complete" << std::endl;
