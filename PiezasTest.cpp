@@ -14,6 +14,7 @@ class PiezasTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
+//sanity check test
 TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
@@ -79,7 +80,6 @@ Piezas p;
 TEST(PiezasTest, droppastfull) {
 
 	Piezas p;
-
 	p.dropPiece(0);
 	p.dropPiece(0);
 	p.dropPiece(0);
@@ -96,7 +96,7 @@ Piezas p;
 
 Piece z = p.pieceAt(-1,-1);
 
-ASSERT_EQ(z,Invalid)
+ASSERT_EQ(z,Invalid);
 
 }
 
