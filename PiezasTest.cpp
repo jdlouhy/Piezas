@@ -170,8 +170,8 @@ p.dropPiece(0);
 
 for (int x = 0; x < BOARD_ROWS; x++){
 for (int i = 1; i < BOARD_COLS-1; i++){
-p.dropPiece(i);
 p.dropPiece(-1);
+p.dropPiece(-i);
 }
 }
 Piece result = p.gameState();
