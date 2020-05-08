@@ -188,15 +188,18 @@ Piece Piezas::gameState()
 	std::cout << "vertical scan complete" << std::endl;
 	std::cout << "xmax : " << xmax << " omax : " << omax << std::endl;
 	if (omax > xmax) {
-		Piece ret = O;
+              std::cout << "Returning O" << std::endl;
+               Piece ret = O;
 		return ret;
 	}
 	else if (xmax < omax) {
+	      std::cout << "Returning X" << std::endl;
 		Piece ret = X;
 		return ret;
 	}
 	//tie case 
 	else {
+	      std::cout << "Returning Blank" << std::endl;
 		Piece ret = Blank;
 		return ret;
 
