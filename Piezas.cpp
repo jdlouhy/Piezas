@@ -156,6 +156,8 @@ Piece Piezas::gameState()
 		}
 
 	}
+	std::cout << "Horizontal scan complete" << std::endl;
+
 	//vertical scan below
 	for (int i = 0; i < BOARD_COLS; i++){
 		int xcount = 0;
@@ -182,6 +184,7 @@ Piece Piezas::gameState()
 			}
 		}
 	}
+	std::cout << "vertical scan complete" << std::endl;
 	if (omax > xmax) {
 		Piece ret = O;
 		return ret;
