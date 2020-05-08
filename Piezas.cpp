@@ -149,7 +149,7 @@ Piece Piezas::gameState()
 					omax = ocount;
 				}
 			}
-			//found a blank piece then game is over
+			//found a blank piece then game is not over
 			else if (board[i][x] == Blank){
 				return Invalid;
 			}
@@ -164,22 +164,22 @@ Piece Piezas::gameState()
 		int ocount = 0;
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_ROWS; x++){
-			if (board[i][x] == X){
+			if (board[x][i] == X){
 				ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
 					xmax = xcount;
 				}
 			}
-			else if (board [i][x] == O){
+			else if (board [x][i] == O){
 				xcount = 0;
 				ocount += 1;
 				if (ocount > omax){
 					omax = ocount;
 				}
 			}
-			//found a blank piece then game is over
-			else if (board[i][x] == Blank){
+			//found a blank piece then game is not over
+			else if (board[x][i] == Blank){
 				return Invalid;
 			}
 		}
