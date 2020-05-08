@@ -192,7 +192,7 @@ Piece Piezas::gameState()
                Piece ret = O;
 		return ret;
 	}
-	else if (xmax < omax) {
+	else if (xmax > omax) {
 	      std::cout << "Returning X" << std::endl;
 		Piece ret = X;
 		return ret;
