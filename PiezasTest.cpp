@@ -39,6 +39,8 @@ TEST(PiezasTest, resettest){
 	Piezas p; 
 
 	p.dropPiece(0);
+ 
+        p.reset();
 
 	Piece x = p.pieceAt(BOARD_ROWS-1,0);
 
