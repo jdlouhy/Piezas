@@ -40,8 +40,8 @@ TEST(PiezasTest, resettest){
 	Piezas p; 
 
 	p.dropPiece(0);
- 
-        p.reset();
+
+	p.reset();
 
 	Piece x = p.pieceAt(BOARD_ROWS-1,0);
 
@@ -64,13 +64,13 @@ TEST(PiezasTest, dropleftbounds) {
 }
 //drops piece in negative col on o's turn
 TEST(PiezasTest, dropleftboundsoturn){
-Piezas p;
- 
- p.dropPiece(0);
+	Piezas p;
 
- Piece o = p.dropPiece(-1);
+	p.dropPiece(0);
 
- ASSERT_EQ(o, Invalid);
+	Piece o = p.dropPiece(-1);
+
+	ASSERT_EQ(o, Invalid);
 
 
 
@@ -92,28 +92,58 @@ TEST(PiezasTest, droppastfull) {
 //get piece at invalid spot- check that this returns invalid
 TEST(PiezasTest, invalidpieceat) {
 
-Piezas p;
+	Piezas p;
 
-Piece z = p.pieceAt(-1,-1);
+	Piece check = p.pieceAt(-1,-1);
 
-ASSERT_EQ(z,Invalid);
+	ASSERT_EQ(check,Invalid);
 
 }
 
 //game not done yet test
 TEST(PiezasTest, gamenotdoneyet) {
-Piezas p;
-p.dropPiece(0);
-p.dropPiece(0);
- 
-Piece x = p.gameState();
+	Piezas p;
+	p.dropPiece(0);
+	p.dropPiece(0);
 
-ASSERT_EQ(x, Invalid);
+	Piece result = p.gameState();
+
+	ASSERT_EQ(result, Invalid);
 
 }
 
+//X is winner
+TEST(PiezasTest, Xiswinner) {
+	Piezas p;
+//x turn goes first and then make every o turn invalid
 
+	for (int i = 0; i < BOARD_ROWS; i++){
+		for (int x = 0; x < BOARD_COLS; x++){
+			p.dropPiece(x);
+			p.dropPiece(-1);
+		}   
+	}   
+	Piece result  = p.gameState();
 
+	ASSERT_EQ(result, X);
+}
 
+//O is winner 
+TEST(PiezasTest, Oiswinner){
+
+        Piezas p;
+//o turn goes second so make every x turn invalid
+
+        for (int i = 0; i < BOARD_ROWS; i++){
+                for (int x = 0; x < BOARD_COLS; x++){
+                        p.dropPiece(-1);
+                        p.dropPiece(x);
+                }
+        }
+        Piece result  = p.gameState();
+
+        ASSERT_EQ(result, O);
+
+}
 
 //check for ties game state, make sure wins are recognized correctly
