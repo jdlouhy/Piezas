@@ -176,7 +176,6 @@ p.dropPiece(i);
 }
 
 for (int i = 0; i < BOARD_ROWS; i++) {
-p.dropPiece(-1);
 p.dropPiece(BOARD_COLS-1);
 }
 Piece result = p.gameState();
