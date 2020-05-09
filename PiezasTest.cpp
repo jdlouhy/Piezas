@@ -208,7 +208,6 @@ TEST(PiezasTest, TieTestRegular){
         Piece result  = p.gameState();
         ASSERT_EQ(result, Blank);
 }
-}
 //scan to find that  x wins, vertical scan should catch the max
 TEST(PiezasTest, VerticalScanXWins) {
 
