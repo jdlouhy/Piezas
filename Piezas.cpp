@@ -153,7 +153,8 @@ Piece Piezas::gameState()
 			}
 			//found a blank piece then game is not over
 			else if (board[i][x] == Blank){
-				return Invalid;
+                        std::cout << " found blank at : " << i << " " << x << std::endl;
+                     return Invalid;
 			}
 		}
 
