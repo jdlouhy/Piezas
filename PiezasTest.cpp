@@ -83,16 +83,36 @@ TEST(PiezasTest, droppastfull) {
    
         Piece z;
 
-	for (int i = 0; i < board_rows+1; i++) {
+	for (int i = 0; i < BOARD_ROWS+1; i++) {
          z = p.dropPiece(0);
 	}
 
 	ASSERT_EQ(z, Blank);
 
 }
+//get piece at invalid spot-by row, not column check that this returns invalid
+TEST(PiezasTest, invalidrowvalidcolumn) {
+
+        Piezas p;
+
+        Piece check = p.pieceAt(-1,0);
+
+        ASSERT_EQ(check,Invalid);
+
+}
+//get piece at invalid spot-by row, not column check that this returns invalid
+TEST(PiezasTest, invalidcolumnvalidrow) {
+
+        Piezas p;
+
+        Piece check = p.pieceAt(0,-1);
+
+        ASSERT_EQ(check,Invalid);
+
+}
 
 //get piece at invalid spot- check that this returns invalid
-TEST(PiezasTest, invalidpieceat) {
+TEST(PiezasTest, invalidpieceatoutsideleft) {
 
 	Piezas p;
 
@@ -102,7 +122,7 @@ TEST(PiezasTest, invalidpieceat) {
 
 }
 //get piece at invalid spot outside bounds, check that this returns invalid
-TEST(PiezasTest, invalidpieceatoutside) {
+TEST(PiezasTest, invalidpieceatoutsideright) {
 
         Piezas p;
 
