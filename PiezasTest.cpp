@@ -163,23 +163,7 @@ TEST(PiezasTest, VerticalScanXWins) {
 
 	Piezas p;
         p.reset();
-	for (int i = 0; i < BOARD_ROWS; i++){
-//		p.dropPiece(0);
-	}
-
-	for (int x = 1; x < BOARD_COLS-2; x++){
-		for (int i = 0; i < BOARD_ROWS; i++){
-//			p.dropPiece(-1);
-//	Piece t = p.dropPiece(x);
-//	std::cout << "Piece t " << t << std::endl;
-	}
-	}
-
-//	for (int i = 0; i < BOARD_ROWS; i++) {
 	
-//		p.dropPiece(BOARD_COLS-1);
-             //   p.dropPiece(-1);
-//}
 	Piece result = p.gameState();
 
 	ASSERT_EQ(result, X);
