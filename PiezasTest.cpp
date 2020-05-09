@@ -76,14 +76,16 @@ TEST(PiezasTest, dropleftboundsoturn){
 
 }
 
-//drop past full
+//drop past full, make sure this comes back as blank
 TEST(PiezasTest, droppastfull) {
 
 	Piezas p;
-	p.dropPiece(0);
-	p.dropPiece(0);
-	p.dropPiece(0);
-	Piece z = p.dropPiece(0);
+   
+        Piece z;
+
+	for (int i = 0; i < board_rows+1; i++) {
+         z = p.dropPiece(0);
+	}
 
 	ASSERT_EQ(z, Blank);
 
@@ -97,6 +99,16 @@ TEST(PiezasTest, invalidpieceat) {
 	Piece check = p.pieceAt(-1,-1);
 
 	ASSERT_EQ(check,Invalid);
+
+}
+//get piece at invalid spot outside bounds, check that this returns invalid
+TEST(PiezasTest, invalidpieceatoutside) {
+
+        Piezas p;
+
+        Piece check = p.pieceAt(BOARD_ROWS+1,BOARD_COLS+1);
+
+        ASSERT_EQ(check,Invalid);
 
 }
 
