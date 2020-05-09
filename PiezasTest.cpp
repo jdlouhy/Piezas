@@ -18,8 +18,6 @@ TEST(PiezasTest, sanityCheck)
 {
 	ASSERT_TRUE(true);
 }
-
-
 //for place test, we need initial test, bounds checking, full case,  
 //initial pieceat test
 TEST(PiezasTest, placetest){
@@ -28,8 +26,8 @@ TEST(PiezasTest, placetest){
 
 	p.dropPiece(0);
 
-	Piece x = p.pieceAt(BOARD_ROWS-1,0);
-	ASSERT_EQ(x,X);
+	Piece check = p.pieceAt(BOARD_ROWS-1,0);
+	ASSERT_EQ(check,X);
 
 }
 
@@ -42,10 +40,10 @@ TEST(PiezasTest, resettest){
 
 	p.reset();
 
-	Piece x = p.pieceAt(BOARD_ROWS-1,0);
+	Piece check = p.pieceAt(BOARD_ROWS-1,0);
 
 
-	ASSERT_EQ(x,Blank);
+	ASSERT_EQ(check,Blank);
 
 
 
@@ -55,9 +53,9 @@ TEST(PiezasTest, dropleftbounds) {
 
 	Piezas p;
 
-	Piece x = p.dropPiece(-1);
+	Piece check = p.dropPiece(-1);
 
-	ASSERT_EQ(x, Invalid);
+	ASSERT_EQ(check, Invalid);
 
 
 }
@@ -66,9 +64,9 @@ TEST(PiezasTest, droprightbounds) {
 
         Piezas p;
 
-        Piece x = p.dropPiece(BOARD_COLS+1);
+        Piece check = p.dropPiece(BOARD_COLS+1);
 
-        ASSERT_EQ(x, Invalid);
+        ASSERT_EQ(check, Invalid);
 
 
 }
@@ -78,9 +76,9 @@ TEST(PiezasTest, dropleftboundsoturn){
 
 	p.dropPiece(0);
 
-	Piece o = p.dropPiece(-1);
+	Piece check = p.dropPiece(-1);
 
-	ASSERT_EQ(o, Invalid);
+	ASSERT_EQ(check, Invalid);
 }
 
 //drop past full, make sure this comes back as blank
@@ -88,13 +86,13 @@ TEST(PiezasTest, droppastfull) {
 
 	Piezas p;
    
-        Piece z;
+        Piece check;
 
 	for (int i = 0; i < BOARD_ROWS+1; i++) {
-         z = p.dropPiece(0);
+         check = p.dropPiece(0);
 	}
 
-	ASSERT_EQ(z, Blank);
+	ASSERT_EQ(check, Blank);
 
 }
 //get piece at invalid spot-by row, not column check that this returns invalid
