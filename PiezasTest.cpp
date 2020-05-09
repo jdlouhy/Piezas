@@ -169,10 +169,14 @@ p.dropPiece(0);
 }
 
 for (int x = 0; x < BOARD_ROWS; x++){
-for (int i = 1; i < BOARD_COLS; i++){
+for (int i = 1; i < BOARD_COLS-1; i++){
 p.dropPiece(-1);
 p.dropPiece(i);
 }
+}
+
+for (int i = 0; i < BOARD_ROWS; i++) {
+p.dropPiece(BOARD_COLS-1);
 }
 Piece result = p.gameState();
 
