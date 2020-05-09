@@ -62,6 +62,17 @@ TEST(PiezasTest, dropleftbounds) {
 
 
 }
+
+TEST(PiezasTest, droprightbounds) {
+
+        Piezas p;
+
+        Piece x = p.dropPiece(BOARD_COLS+1);
+
+        ASSERT_EQ(x, Invalid);
+
+
+}
 //drops piece in negative col on o's turn
 TEST(PiezasTest, dropleftboundsoturn){
 	Piezas p;
@@ -91,7 +102,7 @@ TEST(PiezasTest, droppastfull) {
 
 }
 //get piece at invalid spot-by row, not column check that this returns invalid
-TEST(PiezasTest, invalidrowvalidcolumn) {
+TEST(PiezasTest, invalidrowvalidcolumnpieceat) {
 
         Piezas p;
 
@@ -101,7 +112,7 @@ TEST(PiezasTest, invalidrowvalidcolumn) {
 
 }
 //get piece at invalid spot-by row, not column check that this returns invalid
-TEST(PiezasTest, invalidcolumnvalidrow) {
+TEST(PiezasTest, invalidcolumnvalidrowpieceat) {
 
         Piezas p;
 
