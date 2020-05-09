@@ -162,7 +162,7 @@ TEST(PiezasTest, TieTest){
 TEST(PiezasTest, VerticalScanXWins) {
 
 	Piezas p;
-
+        p.reset();
 	for (int i = 0; i < BOARD_ROWS; i++){
 		p.dropPiece(0);
 	}
