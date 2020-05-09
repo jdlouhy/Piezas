@@ -115,7 +115,7 @@ TEST(PiezasTest, gamenotdoneyet) {
 //X is winner
 TEST(PiezasTest, Xiswinner) {
 	Piezas p;
-//x turn goes first and then make every o turn invalid
+	//x turn goes first and then make every o turn invalid
 
 	for (int i = 0; i < BOARD_ROWS; i++){
 		for (int x = 0; x < BOARD_COLS; x++){
@@ -131,55 +131,55 @@ TEST(PiezasTest, Xiswinner) {
 //O is winner 
 TEST(PiezasTest, Oiswinner){
 
-        Piezas p;
-//o turn goes second so make every x turn invalid
+	Piezas p;
+	//o turn goes second so make every x turn invalid
 
-        for (int i = 0; i < BOARD_ROWS; i++){
-                for (int x = 0; x < BOARD_COLS; x++){
-                        p.dropPiece(-1);
-                        p.dropPiece(x);
-                }
-        }
-        Piece result  = p.gameState();
+	for (int i = 0; i < BOARD_ROWS; i++){
+		for (int x = 0; x < BOARD_COLS; x++){
+			p.dropPiece(-1);
+			p.dropPiece(x);
+		}
+	}
+	Piece result  = p.gameState();
 
-        ASSERT_EQ(result, O);
+	ASSERT_EQ(result, O);
 
 }
 
 //check for ties game state, make sure wins are recognized correctly
 TEST(PiezasTest, TieTest){
-        Piezas p;
-        for (int i = 0; i < BOARD_ROWS; i++){
-                for (int x = 0; x < BOARD_COLS; x++){
-                        p.dropPiece(x);
-                        p.dropPiece(x);
-                }
-        }
-        Piece result  = p.gameState();
-        ASSERT_EQ(result, Blank);
+	Piezas p;
+	for (int i = 0; i < BOARD_ROWS; i++){
+		for (int x = 0; x < BOARD_COLS; x++){
+			p.dropPiece(x);
+			p.dropPiece(x);
+		}
+	}
+	Piece result  = p.gameState();
+	ASSERT_EQ(result, Blank);
 }
 //scan to find that  x wins, vertical scan should catch this one
 TEST(PiezasTest, VerticalScanXWins) {
 
-Piezas p;
+	Piezas p;
 
-for (int i = 0; i < BOARD_ROWS; i++){
-p.dropPiece(0);
-}
+	for (int i = 0; i < BOARD_ROWS; i++){
+		p.dropPiece(0);
+	}
 
-for (int x = 0; x < BOARD_ROWS; x++){
-for (int i = 1; i < BOARD_COLS-1; i++){
-p.dropPiece(-1);
-p.dropPiece(i);
-}
-}
+	for (int x = 0; x < BOARD_ROWS; x++){
+		for (int i = 1; i < BOARD_COLS-2; i++){
+			p.dropPiece(-1);
+			p.dropPiece(i);
+		}
+	}
 
-for (int i = 0; i < BOARD_ROWS; i++) {
-p.dropPiece(-1);
-p.dropPiece(BOARD_COLS-1);
+	for (int i = 0; i < BOARD_ROWS; i++) {
+		p.dropPiece(BOARD_COLS-1);
+                p.dropPiece(-1);
 }
-Piece result = p.gameState();
+	Piece result = p.gameState();
 
-ASSERT_EQ(result, X);
+	ASSERT_EQ(result, X);
 
 }
