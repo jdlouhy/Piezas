@@ -170,10 +170,10 @@ TEST(PiezasTest, VerticalScanXWins) {
 	p.dropPiece(-1);
 	}
         
-        for (int i = 1; i < BOARD_COLS; i++) {
+        for (int i = 1; i < BOARD_COLS-1; i++) {
         for (int t = 0; t < BOARD_ROWS; t++) {
-         p.dropPiece(-1);
 	 p.dropPiece(i);
+	 p.dropPiece(-1);
 	}
 	}
 
