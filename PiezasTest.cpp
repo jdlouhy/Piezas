@@ -164,11 +164,10 @@ TEST(PiezasTest, VerticalScanXWins) {
 	Piezas p;
         p.reset();
      
-        bool check = true;
  
         for (int i = 0; i < BOARD_ROWS; i++){
-        P.dropPiece(0);
-	P.dropPiece(-1);
+        p.dropPiece(0);
+	p.dropPiece(-1);
 	}
 
 	Piece result = p.gameState();
