@@ -162,7 +162,6 @@ TEST(PiezasTest, TieTest){
 TEST(PiezasTest, VerticalScanXWins) {
 
 	Piezas p;
-	p.reset();
 
 
 
@@ -180,5 +179,29 @@ TEST(PiezasTest, VerticalScanXWins) {
 	Piece result = p.gameState();
 
 	ASSERT_EQ(result, X);
+
+}
+
+//scan to find that  O wins, vertical scan should catch the max
+TEST(PiezasTest, VerticalScanOWins) {
+
+        Piezas p;
+
+
+
+        for (int i = 0; i < BOARD_COLS-1; i++) {
+                for (int t = 0; t < BOARD_ROWS; t++) {
+                        p.dropPiece(i);
+                }
+        }
+        //fill out xs for last one (makes x winner)
+        for (int i = 0; i < BOARD_ROWS; i++) {
+                p.dropPiece(BOARD_COLS-1);
+		p.dropPiece(-1);
+        }
+
+        Piece result = p.gameState();
+
+        ASSERT_EQ(result, O);
 
 }
