@@ -167,7 +167,7 @@ TEST(PiezasTest, VerticalScanXWins) {
 		p.dropPiece(0);
 	}
 
-	for (int x = 1; x < BOARD_COLS-1; x++){
+	for (int x = 1; x < BOARD_COLS-2; x++){
 		for (int i = 0; i < BOARD_ROWS; i++){
 //			p.dropPiece(-1);
 	Piece t = p.dropPiece(x);
