@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/jdlouhy/Piezas.svg?branch=master)](https://travis-ci.com/jdlouhy/Piezas)
 
-[![Coverage Status](https://coveralls.io/repos/github/jdlouhy/Piezas/badge.svg)](https://coveralls.io/github/jdlouhy/Piezas)
+[![Coverage Status](https://coveralls.io/repos/github/jdlouhy/Piezas/badge.svg?branch=master)](https://coveralls.io/github/jdlouhy/Piezas?branch=master)
 # Piezas
 
 ## Associated Enumerated Types
