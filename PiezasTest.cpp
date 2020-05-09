@@ -4,7 +4,6 @@
 
 #include <gtest/gtest.h>
 #include "Piezas.h"
-#include <iostream>
 class PiezasTest : public ::testing::Test
 {
 	protected:
@@ -155,7 +154,7 @@ TEST(PiezasTest, gamenotdoneyet) {
 
 }
 
-//X is winner
+//X is winner, discovered horizontally
 TEST(PiezasTest, Xiswinner) {
 	Piezas p;
 	//x turn goes first and then make every o turn invalid
@@ -171,7 +170,7 @@ TEST(PiezasTest, Xiswinner) {
 	ASSERT_EQ(result, X);
 }
 
-//O is winner 
+//O is winner, discovered horizontally 
 TEST(PiezasTest, Oiswinner){
 
 	Piezas p;

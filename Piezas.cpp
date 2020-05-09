@@ -1,6 +1,5 @@
 #include "Piezas.h"
 #include <vector>
-#include <iostream>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -161,7 +160,6 @@ Piece Piezas::gameState()
 	for (int i = 0; i < BOARD_COLS; i++){
 		int xcount = 0;
 		int ocount = 0;
-		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_ROWS; x++){
                                if (board[x][i] == X){
                                 ocount = 0;
