@@ -136,7 +136,6 @@ Piece Piezas::gameState()
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_COLS; x++){
 			if (board[i][x] == X){
-			std::cout << " found  x at : " << i << " " << x << std::endl;
 				ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
@@ -144,7 +143,6 @@ Piece Piezas::gameState()
 				}
 			}
 			else if (board [i][x] == O){
-			std::cout << " found o at : " << i << " " << x  << std::endl;
 				xcount = 0;
 				ocount += 1;
 				if (ocount > omax){
@@ -153,13 +151,11 @@ Piece Piezas::gameState()
 			}
 			//found a blank piece then game is not over
 			else if (board[i][x] == Blank){
-                        std::cout << " found blank at : " << i << " " << x << std::endl;
                      return Invalid;
 			}
 		}
 
 	}
-	std::cout << "Horizontal scan complete" << std::endl;
 
 	//vertical scan below
 	for (int i = 0; i < BOARD_COLS; i++){
@@ -167,9 +163,7 @@ Piece Piezas::gameState()
 		int ocount = 0;
 		//scan horizontally to find maxes
 		for (int x = 0; x < BOARD_ROWS; x++){
-                            std::cout << "checking at [ " << x << " ] " << " [ " << i << " ]" << std::endl;
                                if (board[x][i] == X){
-                                std::cout << " found x at  : " << x << " " << i << std::endl;
                                 ocount = 0;
 				xcount += 1;
 				if (xcount > xmax) {
@@ -179,28 +173,22 @@ Piece Piezas::gameState()
 			else if (board [x][i] == O){
 				xcount = 0;
 				ocount += 1;
-				std::cout << " found o at : " << x << " " << i << std::endl;
 				if (ocount > omax){
 					omax = ocount;
 				}
 			}
 		}
 	}
-	std::cout << "vertical scan complete" << std::endl;
-	std::cout << "xmax : " << xmax << " omax : " << omax << std::endl;
 	if (omax > xmax) {
-              std::cout << "Returning O" << std::endl;
                Piece ret = O;
 		return ret;
 	}
 	else if (xmax > omax) {
-	      std::cout << "Returning X" << std::endl;
 		Piece ret = X;
 		return ret;
 	}
 	//tie case 
 	else {
-	      std::cout << "Returning Blank" << std::endl;
 		Piece ret = Blank;
 		return ret;
 

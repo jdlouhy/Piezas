@@ -219,8 +219,6 @@ TEST(PiezasTest, VerticalScanOWins) {
 
         Piezas p;
 
-
-
         for (int i = 0; i < BOARD_COLS-1; i++) {
                 for (int t = 0; t < BOARD_ROWS; t++) {
                         p.dropPiece(i);
