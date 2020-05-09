@@ -170,8 +170,9 @@ TEST(PiezasTest, VerticalScanXWins) {
 	for (int x = 1; x < BOARD_COLS-1; x++){
 		for (int i = 0; i < BOARD_ROWS; i++){
 //			p.dropPiece(-1);
-			p.dropPiece(x);
-		}
+	Piece t = p.dropPiece(x);
+	std::cout << "Piece t " << t << std::endl;
+	}
 	}
 
 	for (int i = 0; i < BOARD_ROWS; i++) {
