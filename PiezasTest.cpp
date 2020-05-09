@@ -158,11 +158,10 @@ TEST(PiezasTest, TieTest){
         Piece result  = p.gameState();
         ASSERT_EQ(result, Blank);
 }
-
+//scan to find that  x wins, vertical scan should catch this one
 TEST(PiezasTest, VerticalScanXWins) {
 
 Piezas p;
-//fill first column 
 
 for (int i = 0; i < BOARD_ROWS; i++){
 p.dropPiece(0);
@@ -176,8 +175,8 @@ p.dropPiece(i);
 }
 
 for (int i = 0; i < BOARD_ROWS; i++) {
-p.dropPiece(BOARD_COLS-1);
 p.dropPiece(-1);
+p.dropPiece(BOARD_COLS-1);
 }
 Piece result = p.gameState();
 
