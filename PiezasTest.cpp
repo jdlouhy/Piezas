@@ -81,9 +81,6 @@ TEST(PiezasTest, dropleftboundsoturn){
 	Piece o = p.dropPiece(-1);
 
 	ASSERT_EQ(o, Invalid);
-
-
-
 }
 
 //drop past full, make sure this comes back as blank
@@ -121,7 +118,7 @@ TEST(PiezasTest, invalidcolumnvalidrowpieceat) {
 
 }
 
-//get piece at invalid spot- check that this returns invalid
+//get piece at invalid spot-outside left bounds check that this returns invalid
 TEST(PiezasTest, invalidpieceatoutsideleft) {
 
 	Piezas p;
@@ -131,7 +128,7 @@ TEST(PiezasTest, invalidpieceatoutsideleft) {
 	ASSERT_EQ(check,Invalid);
 
 }
-//get piece at invalid spot outside bounds, check that this returns invalid
+//get piece at invalid spot outside right bounds, check that this returns invalid
 TEST(PiezasTest, invalidpieceatoutsideright) {
 
         Piezas p;
@@ -187,9 +184,9 @@ TEST(PiezasTest, Oiswinner){
 	ASSERT_EQ(result, O);
 
 }
-
-//check for ties game state, make sure wins are recognized correctly
-TEST(PiezasTest, TieTest){
+//check for ties game state, switching between rows make sure wins are recognized correctly
+//
+TEST(PiezasTest, TieTestSwitchedRows){
 	Piezas p;
 	for (int i = 0; i < BOARD_ROWS; i++){
 		for (int x = 0; x < BOARD_COLS; x++){
@@ -200,13 +197,22 @@ TEST(PiezasTest, TieTest){
 	Piece result  = p.gameState();
 	ASSERT_EQ(result, Blank);
 }
+//similar tie case, but instead just alternate each
+TEST(PiezasTest, TieTestRegular){
+        Piezas p;
+        for (int i = 0; i < BOARD_ROWS; i++){
+                for (int x = 0; x < BOARD_COLS; x++){
+                        p.dropPiece(x);
+                }   
+        }   
+        Piece result  = p.gameState();
+        ASSERT_EQ(result, Blank);
+}
+}
 //scan to find that  x wins, vertical scan should catch the max
 TEST(PiezasTest, VerticalScanXWins) {
 
 	Piezas p;
-
-
-
 	for (int i = 0; i < BOARD_COLS-1; i++) {
 		for (int t = 0; t < BOARD_ROWS; t++) {
 			p.dropPiece(i);
@@ -223,7 +229,6 @@ TEST(PiezasTest, VerticalScanXWins) {
 	ASSERT_EQ(result, X);
 
 }
-
 //scan to find that  O wins, vertical scan should catch the max
 TEST(PiezasTest, VerticalScanOWins) {
 
@@ -234,7 +239,7 @@ TEST(PiezasTest, VerticalScanOWins) {
                         p.dropPiece(i);
                 }
         }
-        //fill out xs for last one (makes x winner)
+        //fill out os for last one (makes x winner)
         for (int i = 0; i < BOARD_ROWS; i++) {
                 p.dropPiece(BOARD_COLS-1);
 		p.dropPiece(-1);
